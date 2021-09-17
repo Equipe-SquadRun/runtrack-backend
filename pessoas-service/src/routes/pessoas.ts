@@ -1,9 +1,9 @@
 import { Router, Request, Response } from 'express'
+import pessoasController from '../controllers/pessoas'
 
 const router = Router()
 
-router.get('/', (req, res, next) => {
-    res.json({ sucesso: true })
-})
+router.get('/', pessoasController.getPessoas)
+router.post('/', pessoasController.addPessoa)
 
 export default router

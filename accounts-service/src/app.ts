@@ -1,6 +1,6 @@
 import express from 'express'
 import helmet from 'helmet'
-import accountsRouter from './routes/pessoas'
+import accountsRouter from './routes/accounts'
 
 const app = express()
 app.use(helmet())
@@ -10,5 +10,5 @@ app.use(accountsRouter)
 
 const port = parseInt(`${ process.env.PORT }`)
 
-app.listen(port)
-console.log(`API funcionando na porta ${ port }`)
+app.listen(3001)
+console.log(`API funcionando na porta ${ port }`);
