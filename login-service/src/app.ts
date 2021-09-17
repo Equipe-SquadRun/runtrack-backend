@@ -1,6 +1,6 @@
 import express from 'express'
 import helmet from 'helmet'
-import accountsRouter from './routes/accounts'
+import accountsRouter from './routes/users'
 
 const app = express()
 app.use(helmet())
