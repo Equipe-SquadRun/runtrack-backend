@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
-import { IAccount } from '../models/users'
+import { IUsers } from '../models/users'
 
-const accounts : IAccount[] = []
+const accounts : IUsers[] = []
 
 function getAllAccounts(req: Request, res: Response, next: any){
     res.json(accounts)
@@ -27,7 +27,7 @@ function getOneAccount(req: Request, res: Response, next: any){
 
 function addAccount(req: Request, res: Response, next: any){
     try {
-        const newAccount = req.body as IAccount
+        const newAccount = req.body as IUsers
         accounts.push(newAccount)
         res.status(201).json(newAccount)
     }
