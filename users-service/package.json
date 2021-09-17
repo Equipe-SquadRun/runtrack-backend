@@ -1,0 +1,22 @@
+{
+  "name": "users-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config .dist/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.9.2"
+  }
+}
