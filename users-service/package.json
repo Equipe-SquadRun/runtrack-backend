@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config .dist/app",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node -r dotenv/config .dist/server",
+    "compile": "tsc && node -r dotenv/config ./dist/server",
+    "dev": "nodemon -e ts, json --ignore dist --exec \"npm run compile\"",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -13,10 +15,17 @@
   "dependencies": {
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
-    "helmet": "^4.6.0"
+    "helmet": "^4.6.0",
+    "nodemon": "^2.0.12"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
-    "@types/node": "^16.9.2"
+    "@types/jest": "^27.0.1",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.9.2",
+    "@types/supertest": "^2.0.11",
+    "jest": "^27.2.0",
+    "supertest": "^6.1.6",
+    "ts-jest": "^27.0.5"
   }
 }

@@ -1,11 +1,11 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import helmet from 'helmet'
+import usersRouter from './routes/users'
 
 const app = express()
-const port = parseInt(`${ process.env.PORT }`)
-
 app.use(helmet())
-app.listen(port)
+app.use(express.json())
+app.use(usersRouter)
 
-console.log(`API funcionando na porta ${ port }`);
+export default app
