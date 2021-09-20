@@ -5,6 +5,11 @@ export interface IUsers {
     password: string
 }
 
+export interface IAuth {
+    login: string
+    password: string
+}
+
 import Joi from 'joi'
 const usersSchema = Joi.object({
     id: Joi.number().integer().min(1),
@@ -13,4 +18,9 @@ const usersSchema = Joi.object({
     password: Joi.string().min(8).max(100).required()
 })
 
-export { usersSchema }
+const authSchema = Joi.object({
+    login: Joi.string().email().required(),
+    password: Joi.string().min(8).max(100).required()
+})
+
+export { usersSchema, authSchema }

@@ -1,5 +1,4 @@
 import request from 'supertest'
-import { Request, Response } from 'express'
 import app from '../src/app'
 
 describe('Testar as rotas do users.ts', () => {
@@ -37,14 +36,14 @@ describe('Testar as rotas do users.ts', () => {
         expect(res.status).toEqual(200)
         expect(res.body.id).toBe(1)
     })
-    it('O PATCH com o endpoint /users/:id precisa retornar o status 400', async () => {
+    it('O PATCH com o endpoint /users/:id precisa retornar o status 404', async () => {
         const payload = {            
             name: 'Nome Sobrenome',
             login: 'nome.sobrenome@gmail.com',
             password: '1234567890'
         }
         const res = await request(app).patch('/users/abc').send(payload)
-        expect(res.status).toEqual(400)    
+        expect(res.status).toEqual(404)    
     })
     it('O PATCH com o endpoint /users/:id precisa retornar o status 404', async () => {
         const payload = {            

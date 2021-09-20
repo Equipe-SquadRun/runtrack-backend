@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { IUsers } from '../models/users'
+import { IUsers, IAuth } from '../models/users'
 
 const users : IUsers[] = []
 
@@ -41,21 +41,13 @@ function insertUser(req: Request, res: Response, next: any){
 
 function updateUser(req: Request, res: Response, next: any){
     try {
-        const id = parseInt(req.params.id)
-
-        if(!id){
-            throw new Error('O ID informado não é válido.')
-        }
-
+        const idUser = parseInt(req.params.id)
         const body = req.body as IUsers
-        const index = users.findIndex(item => item.id === id)
-
+        const index = users.findIndex(item => item.id === idUser)
         if(index === -1){
             return res.status(404).end()
         }
-
         const userIndex = users[index]
-
         if(body.name){
             userIndex.name = body.name
         }
@@ -65,7 +57,6 @@ function updateUser(req: Request, res: Response, next: any){
         if(body.password){
             userIndex.password = body.password
         }
-
         users[index] = userIndex
         res.status(200).json(userIndex)
     }
@@ -75,4 +66,23 @@ function updateUser(req: Request, res: Response, next: any){
     }
 }
 
-export default { getAllUsers, getOneUser, insertUser, updateUser }
+function loginAuthentication(req: Request, res: Response, next: any){
+    try {
+        const authBody = req.body as IAuth
+        const index = users.findIndex(item => item.login === authBody.login && item.password === authBody.password)
+        if(index === -1){
+            return res.status(401).end()
+        }
+        res.json({ auth: true, token: {} })
+    }
+    catch(error){
+        console.log(error)
+        res.status(400).end()
+    }
+}
+
+function logoffAuthentication(req: Request, res: Response, next: any){
+    res.json({ auth: false, token: null })
+}
+
+export default { getAllUsers, getOneUser, insertUser, updateUser, loginAuthentication, logoffAuthentication }
