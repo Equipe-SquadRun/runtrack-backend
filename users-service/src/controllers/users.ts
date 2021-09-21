@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { IUsers, IAuth } from '../models/users'
+import { IUsers, IAuth } from '../interfaces/users'
 
 const users : IUsers[] = []
 

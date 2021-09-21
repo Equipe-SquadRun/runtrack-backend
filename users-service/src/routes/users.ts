@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express'
 import usersController from '../controllers/users'
-import { usersSchema, authSchema } from '../models/users'
+import { usersSchema, authSchema } from '../interfaces/users'
 
 function usersValidation(req: Request, res: Response, next: any){
     const { error } = usersSchema.validate(req.body)
