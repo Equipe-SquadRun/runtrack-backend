@@ -13,6 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       evaluation.belongsToOne(models.grades, {
         foreignKey: 'evaluation_id'
       })
+      evaluation.belongsToOne(models.questions, {
+        foreignKey: 'evaluation_id'
+      })
+      evaluation.belongsToMany(models.answers, {
+        foreignKey: 'evaluation_id'
+      })
       evaluation.hasOne(models.subjects, {
         foreignKey: 'subjects_id'
       })
