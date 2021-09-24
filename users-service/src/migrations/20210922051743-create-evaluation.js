@@ -14,6 +14,13 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      subjects_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'subjects', key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

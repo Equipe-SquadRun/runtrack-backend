@@ -17,6 +17,20 @@ module.exports = {
       file: {
         type: Sequelize.STRING
       },
+      person_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'person', key: 'id'
+        }
+      },
+      company_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'company', key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

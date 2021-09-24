@@ -26,6 +26,13 @@ module.exports = {
       cnpj: {
         type: Sequelize.STRING
       },
+      users_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users', key: 'id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
