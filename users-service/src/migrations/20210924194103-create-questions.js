@@ -8,10 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      question: {
-        type: Sequelize.STRING
-      },
-      answer: {
+      description: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -20,6 +17,10 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

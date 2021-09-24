@@ -10,16 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      questions.hasOne(models.evaluation, {
-        foreignKey: 'evaluation_id'
-      })
+      // define association here
     }
   };
   questions.init({
-    ask: DataTypes.STRING
+    description: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'questions',
+    paranoid: true
   });
   return questions;
 };
